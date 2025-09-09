@@ -5,29 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotstar PWA</title>
 
-  <!-- Manifest for PWA -->
   <link rel="manifest" href="manifest.json">
-
-  <!-- Optional theme colors -->
   <meta name="theme-color" content="#0f0f0f">
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Launching Hotstar...</h1>
-  <p>If it doesn’t open automatically, tap below:</p>
-  <a href="https://www.hotstar.com/in/home" target="_blank">Open Hotstar</a>
+  <h1>Hotstar PWA</h1>
+  <p>Your PWA is ready! Tap below to launch Hotstar.</p>
+  <button id="launchBtn">Launch Hotstar</button>
 
   <script>
-    // Register the service worker
+    // Register service worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js')
         .then(() => console.log('Service Worker registered'))
         .catch(err => console.error('SW registration failed:', err));
     }
 
-    // Auto open Hotstar
-    //window.location.href = "https://www.hotstar.com/in/home";
+    // Delay auto-launch (optional)
+    setTimeout(() => {
+      document.getElementById('launchBtn').style.display = 'inline-block';
+    }, 2000); // 2-second delay to ensure manifest detected
+
+    // Launch button click
+    document.getElementById('launchBtn').addEventListener('click', () => {
+      window.location.href = "https://www.hotstar.com/in/home";
+    });
   </script>
 </body>
 </html>
-
-
