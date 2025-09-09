@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotstar PWA</title>
+
+  <!-- Manifest for PWA -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Optional theme colors -->
+  <meta name="theme-color" content="#0f0f0f">
+</head>
+<body>
+  <h1>Launching Hotstar...</h1>
+  <p>If it doesn’t open automatically, tap below:</p>
+  <a href="https://www.hotstar.com/in/home" target="_blank">Open Hotstar</a>
+
+  <script>
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.error('SW registration failed:', err));
+    }
+
+    // Auto open Hotstar
+    window.location.href = "https://www.hotstar.com/in/home";
+  </script>
+</body>
+</html>
+
